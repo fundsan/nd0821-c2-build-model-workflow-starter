@@ -126,6 +126,8 @@ def go(args):
     artifact.add_dir('random_forest_dir')
 
     run.log_artifact(artifact)
+
+
     # Plot feature importance
     fig_feat_imp = plot_feature_importance(sk_pipe, processed_features)
 
@@ -143,7 +145,10 @@ def go(args):
         }
     )
 
-
+    artifact.wait()
+    run.finish()
+    
+    
 def plot_feature_importance(pipe, feat_names):
     # We collect the feature importance for all non-nlp features first
     feat_imp = pipe["random_forest"].feature_importances_[: len(feat_names)-1]
