@@ -101,9 +101,8 @@ def go(args):
     
     mlflow.sklearn.save_model(
             sk_pipe,
-            'random_forest_dir',
-            serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
-            input_example=X_val.iloc[:2],
+            "random_forest_dir",
+            serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE
         )
 
 
@@ -145,7 +144,7 @@ def go(args):
         }
     )
 
-    artifact.wait()
+    
     run.finish()
     
     
